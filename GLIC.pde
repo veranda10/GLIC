@@ -51,6 +51,21 @@ void setup() {
   smooth(8);
   frameRate(20);
 
+  // Simple CLI mode: processing-java --sketch=GLIC --run encode infile outfile
+  if (args != null && args.length >= 3) {
+    String action = args[0];
+    if (action.equals("encode")) {
+      img = loadImage(args[1]);
+      result = encode(img, args[2]);
+      result.save(args[2]);
+      exit();
+    } else if (action.equals("decode")) {
+      result = decode(args[1]);
+      result.save(args[2]);
+      exit();
+    }
+  }
+
   //  img = loadImage("face.jpg");
   //  
   //  buffer=createGraphics(img.width,img.height);
