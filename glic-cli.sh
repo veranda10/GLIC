@@ -12,4 +12,8 @@ if [ -z "$ACTION" ] || [ -z "$INPUT" ] || [ -z "$OUTPUT" ]; then
   echo "Usage: $0 [encode|decode] <input> <output>" >&2
   exit 1
 fi
+if ! command -v processing-java >/dev/null 2>&1; then
+  echo "Error: processing-java command not found. Please install Processing and ensure processing-java is on your PATH." >&2
+  exit 1
+fi
 processing-java --sketch="$DIR" --run "$ACTION" "$INPUT" "$OUTPUT"

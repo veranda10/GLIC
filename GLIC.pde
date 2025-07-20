@@ -47,11 +47,7 @@ int neww, newh, posx=0, posy=0;
 PGraphics buffer;
 
 void setup() {
-  size(750, 750);
-  smooth(8);
-  frameRate(20);
-
-  // Simple CLI mode: processing-java --sketch=GLIC --run encode infile outfile
+  // Check for command-line invocation before opening a window
   if (args != null && args.length >= 3) {
     String action = args[0];
     if (action.equals("encode")) {
@@ -65,6 +61,10 @@ void setup() {
       exit();
     }
   }
+
+  size(750, 750);
+  smooth(8);
+  frameRate(20);
 
   //  img = loadImage("face.jpg");
   //  
