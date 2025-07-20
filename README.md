@@ -9,6 +9,7 @@ Documentation: https://docs.google.com/document/d/1cdJvEmSKNAkzkU0dFUa-kb_QJB2IS
 2. Run `./glic-cli.sh encode input.png output.glic` to encode an image.
 3. Run `./glic-cli.sh decode input.glic output.png` to decode a file.
 
-The helper script checks that `processing-java` is available and then launches
-the sketch in headless mode. If `processing-java` is missing you will see an
-error message explaining how to install it.
+The helper script verifies that `processing-java` is installed and runs the
+sketch in headless mode using `processing-java --run --args <action> <input>
+<output>`. If `processing-java` is missing you will see an error message
+explaining how to install it.

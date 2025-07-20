@@ -16,4 +16,4 @@ if ! command -v processing-java >/dev/null 2>&1; then
   echo "Error: processing-java command not found. Please install Processing and ensure processing-java is on your PATH." >&2
   exit 1
 fi
-processing-java --sketch="$DIR" --run "$ACTION" "$INPUT" "$OUTPUT"
+processing-java --sketch="$DIR" --run --args "$ACTION" "$INPUT" "$OUTPUT"
