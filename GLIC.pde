@@ -47,6 +47,30 @@ int neww, newh, posx=0, posy=0;
 PGraphics buffer;
 
 void setup() {
+  // Check for command-line invocation before opening a window
+  if (args != null && args.length >= 1) {
+    if (args.length < 3) {
+      println("Usage: encode <input> <output> | decode <input> <output>");
+      exit();
+    } else {
+      String action = args[0];
+      if (action.equals("encode")) {
+        img = loadImage(args[1]);
+        result = encode(img, args[2]);
+        result.save(args[2]);
+        exit();
+      } else if (action.equals("decode")) {
+        result = decode(args[1]);
+        result.save(args[2]);
+        exit();
+      } else {
+        println("Unknown action: " + action);
+        println("Usage: encode <input> <output> | decode <input> <output>");
+        exit();
+      }
+    }
+  }
+
   size(750, 750);
   smooth(8);
   frameRate(20);
